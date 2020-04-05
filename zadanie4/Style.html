@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>jQuery</title>
+		<script type="text/javascript"
+				src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script type="text/javascript">
+			//$(document).ready(function () {
+			//		alert('Czy wiesz, że możesz skopiować ten tekst przy pomocy skrótu Ctrl + C.');
+			//});
+			$(function () {
+				$('button:contains(\'Zielony\')').click(function () {
+					$('#classic').addClass('zielona');
+				});
+				$('button:contains(\'mosteczek\')').click(function () {
+					$('#classic').removeClass('zielona');
+				});
+				$('button:contains(\'ugina\')').click(function () {
+					$('#toggle').toggleClass('zielona');
+				});
+
+				$('tr:even').addClass('zielona');
+
+				//$('ol.a>li:not(li href.b)').addClass('zielona');
+				//$('ol.a>li :not(a.b)').addClass('zielona');
+
+				$('button:contains(\':not\')').click(function () {
+					$('ol.a>li a.b)').removeClass('niebieska');
+					$('ol.a > :not(li a.b)').addClass('zielona');
+					//$('ol.a>li :not(a.b)').addClass('zielona');
+				});
+
+				$('button:contains(\'bez :not\')').click(function () {
+					$('ol.a>li a.b').addClass('niebieska');
+					$('ol.a > :not(li a.b)').removeClass('zielona');
+					//$('ol.a>li :not(a.b)').removeClass('zielona');
+				});
+
+
+			});
+		</script>
+		<style>
+			.zielona{background: Pink; color: Green;}
+			.niebieska{background: Green; color: Pink;}
+		</style>
+	</head>
+	<body>
+		<table>
+			<tr><td>Pierwszy</td></tr>
+			<tr><td>Drugi</td></tr>
+			<tr><td>Trzeci</td></tr>
+			<tr><td>Czwarty</td></tr>
+			<tr><td>Piąty</td></tr>
+			<tr><td>Szósty</td></tr>
+		</table>
+		<div>
+			<button>Zielony</button>
+			<button>mosteczek</button>
+			<span id="classic">Zmiana przez dodawanie/usuwanie klasy.</span>
+		</div>
+		<div>
+			<button>ugina się.</button>
+			<span id="toggle">Zmiana przez przełączanie klas.</span>
+		</div>
+
+
+<button>:not</button>
+<button>bez :not</button>
+
+		<ol class="a">
+			<li><a href="wakalaka.html" class="b"></a></li>
+			<li> <a href="wakalaka.html" class="b">LI A.b</a> asd </li>
+			<li> <p>  <a href="wakalaka.html" class="b">LI P A.b</a> asd </p> bbb </li>
+			<li> <a href="wakalaka.html" class="c">LI A.c</a> <p> cos tam </p> </li>
+			<li> Raz <p>  <a href="wakalaka.html" class="c">LI P A.c</a> </p> </li>
+			<li> Nic </li>
+			<li> <p> Trzy </p> </li>
+			<li> <h1> <p> Znowu <h2> nic </h2> </p> <a href="wakalaka.html" class="b">Heh</a> </h1> <p> A jednak coś</p> </li>
+		</ol>
+
+	</body>
+</html>
