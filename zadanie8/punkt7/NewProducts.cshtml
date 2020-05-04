@@ -1,0 +1,19 @@
+﻿@{
+    Page.Title = "Nowy produkt";
+}
+
+@section Site {
+    <form action="NewProductsRedirect.cshtml" method="post">
+        <fieldset class="fs">
+            <legend>Nowy produkt</legend>
+            <label for="name">Nazwa:</label>
+            <input type="text" name="name" />
+            <br />
+            <label for="price">Cena:</label>
+            <input type="number" step="any" name="price" />
+            <br />
+            <input type="submit" value="Dodaj" name="add" />
+        </fieldset>
+    </form>
+
+}

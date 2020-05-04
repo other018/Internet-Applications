@@ -1,0 +1,31 @@
+﻿@{
+    Page.Title = "Finalizacja zamówienia";
+
+    var name = Request["name"];
+    var price = Request["price"].AsDecimal();
+
+    if (Request["action"] == "Anuluj")
+    {
+        Session["cardItems"] = new List<String>();
+        Session["cardPrice"] = new Decimal();
+        Response.Redirect("Card.cshtml");
+    }
+}
+
+@section Site {
+    @if (Request["action"] == "Kup")
+    {
+        <h2>Razem do zapłaty: @price</h2>
+        foreach (var item in ((List<String>)Session["cardItems"]))
+        {
+            ((Dictionary<String, Decimal>)Session["products"]).Remove(item);
+        }
+        Session["cardItems"] = new List<String>();
+        Session["cardPrice"] = new Decimal();
+        }
+
+}
+
+
+
+

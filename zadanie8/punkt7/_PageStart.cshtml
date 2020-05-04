@@ -1,0 +1,19 @@
+﻿@{
+    Layout = "_Layout.cshtml";
+    if (Session["products"] == null)
+    {
+        Session["products"] = new Dictionary<String, Decimal>();
+    }
+
+    if (Session["cardItems"] == null)
+    {
+        Session["cardItems"] = new List<String>();
+    }
+
+    if (Session["cardPrice"] == null)
+    {
+        Session["cardPrice"] = new Decimal();
+    }
+
+    RunPage();
+}

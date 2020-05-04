@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+    <title>@Page.Title</title>
+    <link rel="stylesheet" type="text/css" href="~/Content/Style.css">
+</head>
+<body>
+    @RenderBody()
+    <header>
+        <a href="Main.cshtml">Strona główna</a>
+        <a href="AllProducts.cshtml">Lista produktów</a>
+        <a href="NewProducts.cshtml">Nowy produkt</a>
+        <a href="Card.cshtml">Koszyk</a>
+    </header>
+
+    <main>
+        @RenderSection("Site")
+    </main>
+
+    <footer>
+        P A I
+    </footer>
+</body>
+</html>
+

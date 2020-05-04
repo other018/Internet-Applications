@@ -1,0 +1,42 @@
+﻿@{
+
+    Page.Title = "Dodawanie produktu";
+
+    bool ValidateString(String x)
+    {
+        if (x != null && x != "")
+            return true;
+        else return false;
+    }
+
+    bool ValidateDecimal(Decimal x)
+    {
+        if (!x.Equals(0.0))
+            return true;
+        else return false;
+    }
+    var name = Request["name"];
+    var price = Request["price"].AsDecimal();
+
+    if (ValidateString(name) && ValidateDecimal(price))
+    {
+        if (!((Dictionary<String, Decimal>)Session["products"]).Keys.Contains(name))
+        {
+            ((Dictionary<String, Decimal>)Session["products"]).Add(name, price);
+            Session["added"] = "ok";
+        }
+        else
+        {
+            Session["added"] = name;
+        }
+    }
+    else
+    {
+        Session["added"] = "nok";
+    }
+    Response.Redirect("AllProducts.cshtml");
+}
+
+@section Site {
+    <p>Dodawanie produktu</p>
+}

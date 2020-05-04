@@ -1,0 +1,35 @@
+﻿@{
+    Page.Title = "Koszyk";
+    var items = (List<String>)Session["cardItems"];
+    var price = (Decimal)Session["cardPrice"];
+    var number = 1;
+}
+
+@section Site {
+    <table border="1">
+        <tr>
+            <th>Pozycja</th>
+            <th>Produkt</th>
+        </tr>
+        @foreach (var item in @items)
+        {
+            <tr>
+                <td>@number.</td>
+                @{ number++;}
+                <td>@item</td>
+            </tr>
+        }
+        <tr>
+            <td colspan="2">Razem: @price</td>
+        </tr>
+
+        <tr>
+            <form action="Finalize.cshtml" method="post">
+                <input type="hidden" name="price" value="@price" />
+                <td><input type="submit" value="Kup" name="action" /></td>
+                <td><input type="submit" value="Anuluj" name="action" /></td>
+            </form>
+        </tr>
+    </table>
+
+}

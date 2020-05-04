@@ -1,0 +1,47 @@
+﻿@{
+    Page.Title = "Lista produktów";
+    var items = (Dictionary<String, Decimal>)Session["products"];
+
+    if (Session["added"] != null)
+    {
+        var added = (String) Session["added"];
+
+        if (added == "ok")
+        {
+            <script>alert("Dodano pomyślnie")</script>
+        }
+        else if (added == "nok")
+        {
+            <script>alert("Nie udało się dodać produktu")</script>
+        }
+        else
+        {
+            <script>alert("Produkt @added już jest na liście")</script>
+        }
+        Session["added"] = null;
+    }
+}
+
+@section Site {
+    <table>
+        <tr>
+            <th>Nazwa</th>
+            <th>Cena</th>
+            <th>Do koszyka</th>
+        </tr>
+        @foreach (var item in @items)
+        {
+            <tr>
+                <td>@item.Key</td>
+                <td>@item.Value</td>
+                <td>
+                    <form action="AddProductRedirect.cshtml" method="post">
+                        <input type="hidden" name="name" value="@item.Key" />
+                        <input type="hidden" name="price" value="@item.Value" />
+                        <input type="submit" value="Dodaj" name="ToCard" />
+                    </form>
+                </td>
+            </tr>
+        }
+    </table>
+}

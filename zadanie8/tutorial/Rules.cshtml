@@ -1,0 +1,27 @@
+﻿@{
+    if (Session["rules"] == null) {
+        Session["rules"] = new List<string>();
+    }
+    var rules = ((List<string>)Session["rules"]);
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <form action="~/RulesRedirect.cshtml" method="post">
+        Nowa zasada: <input type="text" name="rule" />
+        <input type="submit" name="send" value="wyślij" />
+    </form>
+
+    <ol>
+        @foreach (var rule in rules)
+        {
+            <li> @rule  </li>
+        }
+
+    </ol>
+</body>
+</html>

@@ -1,0 +1,18 @@
+﻿@{
+    var receivedRule = Request["rule"];
+    if (receivedRule != "" && receivedRule != null)
+    {
+        ((List<string>)Session["rules"]).Add(receivedRule);
+    }
+    Response.Redirect("Rules.cshtml");
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <p>Wiadomość jest przesyłana</p>
+</body>
+</html>

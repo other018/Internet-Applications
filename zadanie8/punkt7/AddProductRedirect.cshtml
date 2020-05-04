@@ -1,0 +1,14 @@
+﻿@{
+    Page.Title = "Add product";
+
+    var name = Request["name"];
+    var price = Request["price"].AsDecimal();
+
+    ((List<String>)Session["cardItems"]).Add(name);
+    Session["cardPrice"] = ((Decimal)Session["cardPrice"]) + price;
+    Response.Redirect("AllProducts.cshtml");
+}
+
+@section Site {
+    <p>Dodawanie produktu</p>
+}
