@@ -1,0 +1,44 @@
+﻿@model Pai_MVC.Models.Genre
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Genre</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Songs)
+        </dt>
+
+        <dd>
+            @if (Model.Songs != null)
+            {
+                foreach (var item in Model.Songs)
+                {
+                    var songName = from s in (IEnumerable<Pai_MVC.Models.Song>)ViewBag.Songs
+                                   where s.Id == item.Id
+                                   select s.Name;
+                @Html.DisplayFor(modelItem => songName)
+                <br />
+                }
+            }
+
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
