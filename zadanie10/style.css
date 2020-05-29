@@ -1,0 +1,28 @@
+h1, p {
+  font-family: Lato;
+}
+
+.doneTask {
+  color: lightgray;
+  text-decoration: line-through
+}
+
+.noDoneTask {
+  color:black;
+  font-weight: bold
+}
+
+ol {
+  list-style-type : none
+}
+
+.middle {
+  text-align: center
+}
+
+.title {
+  text-align: center;
+  color: blueviolet;
+  font-weight: bold;
+  //text-transform: uppercase
+}
